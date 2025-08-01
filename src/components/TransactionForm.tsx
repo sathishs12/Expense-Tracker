@@ -19,6 +19,25 @@ import {
   keyframes,
 } from '@mui/material';
 import { AttachMoney, Category as CategoryIcon } from '@mui/icons-material';
+import { ArrowDownward, ArrowUpward } from '@mui/icons-material';
+import {
+  Fastfood,
+  Flight,
+  ShoppingCart,
+  TrendingUp,
+  AddCircleOutline,
+  Category as DefaultCategoryIcon,
+} from '@mui/icons-material';
+
+const categoryIcons: { [key: string]: React.ElementType } = {
+  Food: Fastfood,
+  Travel: Flight,
+  Shopping: ShoppingCart,
+  Salary: AttachMoney,
+  Investment: TrendingUp,
+  'Add New Category': AddCircleOutline,
+};
+
 
 const fadeIn = keyframes`
   from {
@@ -58,9 +77,9 @@ const TransactionForm = forwardRef((_, ref) => {
   }));
 
   const handleCreate = () => {
-    const finalCategory =
-      category === 'Add New Category' ? customCategory : category;
+    const finalCategory = category === 'Add New Category' ? customCategory : category;
     if (!type || !finalCategory || !amount || !date) return;
+
     dispatch(
       addTransaction({
         id: uuidv4(),
@@ -70,11 +89,16 @@ const TransactionForm = forwardRef((_, ref) => {
         date,
       })
     );
+
     setType('');
     setCategory('');
     setAmount('');
     setDate('');
     setCustomCategory('');
+
+    if (category === 'Add New Category' && customCategory && !categories.includes(customCategory)) {
+      setCategories((prev) => [...prev.filter(c => c !== 'Add New Category'), customCategory, 'Add New Category']);
+    }
   };
 
   return (
@@ -99,7 +123,7 @@ const TransactionForm = forwardRef((_, ref) => {
         sx={{
           textAlign: 'center',
           fontWeight: 'bold',
-          background: 'linear-gradient(to right, #3f51b5, #2196f3)',
+        background: 'linear-gradient(to right, #00c6ff, #0072ff)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           mb: 3,
@@ -138,11 +162,17 @@ const TransactionForm = forwardRef((_, ref) => {
           '& label.Mui-focused': { color: '#0a2342' },
         }}
       >
-        <MenuItem value="income">Income</MenuItem>
-        <MenuItem value="expense">Expense</MenuItem>
+       <MenuItem value="income">
+  <ArrowDownward sx={{ color: 'green', mr: 1 }} />
+  Income
+</MenuItem>
+<MenuItem value="expense">
+  <ArrowUpward sx={{ color: 'red', mr: 1 }} />
+  Expense
+</MenuItem>
       </TextField>
 
-      {/* Category */}
+       {/* Category */}
       <TextField
         label="Category"
         value={category}
@@ -171,11 +201,15 @@ const TransactionForm = forwardRef((_, ref) => {
           '& label.Mui-focused': { color: '#0a2342' },
         }}
       >
-        {categories.map((cat) => (
-          <MenuItem key={cat} value={cat}>
-            {cat}
-          </MenuItem>
-        ))}
+        {categories.map((cat) => {
+          const Icon = categoryIcons[cat] || DefaultCategoryIcon;
+          return (
+            <MenuItem key={cat} value={cat}>
+              <Icon sx={{ color: '#3f51b5', mr: 1 }} />
+              {cat}
+            </MenuItem>
+          );
+        })}
       </TextField>
 
       {/* Custom Category Field */}
