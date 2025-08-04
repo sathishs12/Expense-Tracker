@@ -20,8 +20,17 @@ const App = () => {
   return (
     <Provider store={store}>
       <Header onAddClick={handleAddClick} />
-      <Box p={4} bgcolor="#364c68ff" minHeight="100vh" color="#fff">
-        <BalanceCard />
+      <Box
+        p={4}
+        sx={{
+          minHeight: '100vh',
+          color: '#222',
+          // background: 'linear-gradient(to right, #d2f8d2, #e0f7fa)',
+          // background: 'linear-gradient(to right, #e0e7e0, #f7fdfd)',
+          bgcolor:"#c3c5a5"
+        }}
+      >
+      <BalanceCard />
         <Grid container spacing={4} mt={2}>
           <Grid item xs={12} md={4}><IncomeChart /></Grid>
           <Grid item xs={12} md={4}><TransactionForm ref={formRef} /></Grid>

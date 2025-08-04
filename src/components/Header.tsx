@@ -15,16 +15,16 @@ const transactions = useSelector((state: RootState) => state.transactions.items)
   const toggleTheme = () => {
     setDarkMode(!darkMode);
   };
-
+  const fontFamily = `'Comic Sans MS', 'cursive', 'sans-serif'`; // 🎉 Fun key font
   return (
-    <AppBar position="sticky" sx={{ bgcolor: darkMode ? '#333' : '#0a2342' }}>
+    <AppBar position="sticky" sx={{  background: 'black', }}>
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <Typography variant="h6" fontWeight="bold">
+        <Typography variant="h6" fontWeight="bold" sx={{color:"lavender",fontFamily}}>
           {/* 💸 */}
            Expense Tracker
         </Typography>
 
-        <Box display="flex" alignItems="center" gap={1}>
+        <Box display="flex" alignItems="center" gap={1} sx={{color:"lavender"}}>
           <Tooltip title="Add Transaction">
             <IconButton color="inherit" onClick={onAddClick}>
               <Add />

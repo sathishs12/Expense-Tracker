@@ -40,12 +40,12 @@ const Footer = () => {
   const handleEmailClick = () => {
     window.location.href = 'mailto:test234@gmail.com';
   };
-
+  const fontFamily = `'Comic Sans MS', 'cursive', 'sans-serif'`; // 🎉 Fun key font
   return (
     <Box
       component="footer"
       sx={{
-        bgcolor: '#0a2342',
+       background: 'black',
         py: 2,
         px: 4,
         textAlign: 'center',
@@ -55,12 +55,12 @@ const Footer = () => {
       <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
 
         <Tooltip title="About this app">
-          <IconButton onClick={handleDialogOpen} sx={{ color: 'white' }}>
+          <IconButton onClick={handleDialogOpen} sx={{ color: 'lavender' }}>
             <Info />
           </IconButton>
         </Tooltip>
         <Tooltip title="Back to Top">
-          <IconButton onClick={scrollToTop} sx={{ color: 'white' }}>
+          <IconButton onClick={scrollToTop} sx={{ color: 'lavender' }}>
             <ArrowUpward />
           </IconButton>
         </Tooltip>
@@ -73,21 +73,21 @@ const Footer = () => {
       </Stack>
 
       {/* Copyright */}
-      <Typography variant="body2" color="white" mt={1}>
+      <Typography variant="body2" color="lavender" mt={1} sx={{fontFamily}}>
         © {new Date().getFullYear()} Expense Tracker. All rights reserved.
       </Typography>
 
       {/* Dialog Modal */}
       <Dialog open={open} TransitionComponent={Transition} onClose={handleDialogClose}>
-        <DialogTitle sx={{ bgcolor: '#0a2342', color: '#fff' }}>
+        <DialogTitle sx={{ bgcolor: 'black', color: 'lavender',fontFamily }}>
           🚀 Expense Tracker - Info
         </DialogTitle>
-     <DialogContent sx={{ px: 4, py: 3 }}>
+     <DialogContent sx={{ px: 4, py: 3 ,bgcolor: 'lavender'}}>
   <Typography
     variant="h6"
     gutterBottom
     sx={{
-      fontFamily: 'Poppins, sans-serif',
+      fontFamily,
       fontWeight: 600,
       fontSize: '1.2rem',
       color: '#0a2342',
@@ -100,7 +100,7 @@ const Footer = () => {
   <Typography
     variant="body1"
     sx={{
-      fontFamily: 'Roboto, sans-serif',
+      fontFamily,
       fontSize: '0.95rem',
       color: '#333',
       lineHeight: 1.7,
@@ -115,7 +115,7 @@ const Footer = () => {
     sx={{
       pl: 3,
       fontSize: '0.92rem',
-      fontFamily: 'Roboto Mono, monospace',
+      fontFamily,
       color: '#444',
       lineHeight: 1.8,
     }}
@@ -127,15 +127,20 @@ const Footer = () => {
   </Box>
 </DialogContent>
 
-        <DialogActions sx={{ justifyContent: 'space-between', px: 3, pb: 2 }}>
-          <Typography variant="caption" color="text.secondary">
+        <DialogActions sx={{ justifyContent: 'space-between', px: 3, pb: 2,bgcolor: 'lavender' }}>
+          <Typography variant="caption" color="text.secondary" sx={{fontFamily}}>
             v1.0.0 | Built with 💙 using React & MUI
           </Typography>
           <Button
-          sx={{background: 'linear-gradient(to right, #3f51b5, #2196f3)',
-          boxShadow: '0 6px 20px rgba(33, 150, 243, 0.4)',
+          sx={{background: 'black',
+            color:"lavender",
+            border:"2px solid black",
+            borderRadius:"50px",
+            fontFamily,
           '&:hover': {
-            background: 'linear-gradient(to right, #303f9f, #1976d2)',
+            background: 'lavender',
+             color:"black",
+            border:"2px solid black"
           },}}
           onClick={handleDialogClose} variant="contained" color="primary">
             Close
