@@ -274,6 +274,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Grid from '@mui/material/GridLegacy';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { clearExpenseTransactions } from '../features/transactions/transactionSlice';
+import '@fontsource/comic-neue'; // Defaults to weight 400
 
 const COLORS = ['#FF6B6B', '#FFA502', '#3742FA', '#2ED573'];
 
@@ -314,7 +315,7 @@ const ExpenseChart = () => {
   }));
 
   const hasData = chartData.length > 0;
-  const fontFamily = `'Comic Sans MS', 'cursive', 'sans-serif'`; // 🎉 Fun key font
+const fontFamily = `'Comic Neue', cursive`;// 🎉 Fun key font
   return (
     <Paper
       elevation={4}

@@ -93,6 +93,7 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { Button, Tooltip } from '@mui/material';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import '@fontsource/comic-neue'; // Defaults to weight 400
 
 // 👇 Fix TypeScript error for lastAutoTable
 declare module 'jspdf' {

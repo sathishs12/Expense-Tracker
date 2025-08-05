@@ -639,7 +639,7 @@ import {
   LocalGroceryStore,
   LocalAtm,
 } from '@mui/icons-material';
-
+import '@fontsource/comic-neue'; // Defaults to weight 400
 // Category icons
 const categoryIcons: { [key: string]: React.ElementType } = {
   Food: Fastfood,
@@ -678,7 +678,7 @@ const TransactionForm = forwardRef((_, ref) => {
   const [incomeCategories, setIncomeCategories] = useState(defaultIncomeCategories);
   const [expenseCategories, setExpenseCategories] = useState(defaultExpenseCategories);
   const [highlighted, setHighlighted] = useState(false);
-  const fontFamily = `'Comic Sans MS', 'cursive', 'sans-serif'`; // 🎉 Fun key font
+const fontFamily = `'Comic Neue', cursive`;// 🎉 Fun key font
   const dispatch = useDispatch();
 
   useImperativeHandle(ref, () => ({

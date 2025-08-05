@@ -16,7 +16,7 @@ import {
 import { ArrowUpward, Info, Email } from '@mui/icons-material';
 
 import { TransitionProps } from '@mui/material/transitions';
-
+import '@fontsource/comic-neue'; // Defaults to weight 400
 // Slide transition for dialog
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -40,7 +40,7 @@ const Footer = () => {
   const handleEmailClick = () => {
     window.location.href = 'mailto:test234@gmail.com';
   };
-  const fontFamily = `'Comic Sans MS', 'cursive', 'sans-serif'`; // 🎉 Fun key font
+const fontFamily = `'Comic Neue', cursive`;// 🎉 Fun key font
   return (
     <Box
       component="footer"

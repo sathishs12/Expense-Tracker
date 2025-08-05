@@ -239,7 +239,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Grid from '@mui/material/GridLegacy';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { clearIncomeTransactions } from '../features/transactions/transactionSlice';
-
+import '@fontsource/comic-neue'; // Defaults to weight 400
 const COLORS = ['#FEE715', '#3f51b5', '#2196f3', '#29b6f6'];
 
 const fadeIn = keyframes`
@@ -279,7 +279,7 @@ const IncomeChart = () => {
   }));
 
   const hasData = chartData.length > 0;
-  const fontFamily = `'Comic Sans MS', 'cursive', 'sans-serif'`; // 🎉 Fun key font
+const fontFamily = `'Comic Neue', cursive`;// 🎉 Fun key font
   return (
     <Paper
       elevation={4}
