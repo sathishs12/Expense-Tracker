@@ -4,6 +4,7 @@ import { Add, Refresh, DarkMode, LightMode } from '@mui/icons-material';
 import ExportButton from './ExportButton';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
+import '@fontsource/comic-neue'; // Defaults to weight 400
 
 interface HeaderProps {
   onAddClick?: () => void;
@@ -15,7 +16,7 @@ const transactions = useSelector((state: RootState) => state.transactions.items)
   const toggleTheme = () => {
     setDarkMode(!darkMode);
   };
-  const fontFamily = `'Comic Sans MS', 'cursive', 'sans-serif'`; // 🎉 Fun key font
+const fontFamily = `'Comic Neue', cursive`;// 🎉 Fun key font
   return (
     <AppBar position="sticky" sx={{  background: 'black', }}>
       <Toolbar sx={{ justifyContent: 'space-between' }}>

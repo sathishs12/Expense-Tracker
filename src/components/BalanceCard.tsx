@@ -124,6 +124,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import Grid from '@mui/material/GridLegacy';
+import '@fontsource/comic-neue'; // Defaults to weight 400
 
 const BalanceCard = () => {
   const transactions = useSelector((state: RootState) => state.transactions.items);
@@ -135,7 +136,8 @@ const BalanceCard = () => {
     .reduce((acc, t) => acc + t.amount, 0);
   const balance = income - expense;
 
-  const fontFamily = `'Comic Sans MS', 'cursive', 'sans-serif'`; // 🎉 Fun key font
+//   const fontFamily = `'Comic Sans MS', 'cursive', 'sans-serif'`; // 🎉 Fun key font
+const fontFamily = `'Comic Neue', cursive`;
 
   const cardData = [
     {
