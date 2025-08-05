@@ -26,8 +26,8 @@ const App = () => {
           minHeight: '100vh',
           color: '#222',
           // background: 'linear-gradient(to right, #d2f8d2, #e0f7fa)',
-          // background: 'linear-gradient(to right, #e0e7e0, #f7fdfd)',
-          bgcolor:"#c3c5a5"
+          background: 'linear-gradient(to right, #e0e7e0, #f7fdfd)',
+          // bgcolor:"#c9c9c3"
         }}
       >
       <BalanceCard />
