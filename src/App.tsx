@@ -118,7 +118,6 @@
 
 // export default App;
 
-
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './store';
@@ -128,15 +127,18 @@ import BalanceCard from './components/BalanceCard';
 import IncomeChart from './components/IncomeChart';
 import ExpenseChart from './components/ExpenseChart';
 import TransactionForm from './components/TransactionForm';
-import { Box } from '@mui/material';
+import { Box, SpeedDial, SpeedDialAction } from '@mui/material';
 import Grid from '@mui/material/GridLegacy';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CategoryTransactionCards from './components/CategoryTransactionCards';
 import LoginPage from './components/LoginPage';
+import FinanceDashboard from './components/FinanceDashboard';
+import { ArrowUpward } from '@mui/icons-material';
 
 const App = () => {
   const formRef = useRef<any>(null);
+  const eventFormRef = useRef<any>(null);
   const dispatch = useDispatch();
 
   const userEmail = useSelector((state: RootState) => state.user.email);
@@ -155,11 +157,7 @@ const App = () => {
         const res = await fetch(`/api/check-session?email=${encodeURIComponent(userEmail)}`);
         const data = await res.json();
         if (!data.active) {
-          // Instead of setUser(null), dispatch a logout action or clear user properly
-          // Assuming your userSlice has a logout or clearUser action:
-          dispatch(setUser({ name: '', email: '' })); // or create a logout action for better semantics
-
-          // Redirect to login page via window.location
+          dispatch(setUser({ name: '', email: '' }));
           window.location.href = '/login';
         }
       } catch (error) {
@@ -178,9 +176,17 @@ const App = () => {
     formRef.current?.scrollToAndHighlight();
   };
 
+  const handleEventFormRefClick = (sectionId?: string) => {
+    eventFormRef.current?.scrollToAndHighlightFinance(sectionId);
+  };
+
+  const handleGoTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
-      <Header onAddClick={handleAddClick} />
+      <Header onAddClick={handleAddClick} onEventFormClick={handleEventFormRefClick} />
       <Box
         p={4}
         sx={{
@@ -202,8 +208,29 @@ const App = () => {
           </Grid>
         </Grid>
         <CategoryTransactionCards />
+        <FinanceDashboard ref={eventFormRef} />
       </Box>
       <Footer />
+
+      {/* SpeedDial for Go To Top */}
+    <SpeedDial
+  ariaLabel="Go to top"
+  sx={{
+    position: 'fixed',
+    bottom: 32,
+    right: 32,
+    zIndex: 1500,
+    '& .MuiFab-root': {
+      bgcolor: 'black',
+      '&:hover': {
+        bgcolor: '#222', // slightly lighter on hover, optional
+      },
+    },
+  }}
+  icon={<ArrowUpward sx={{ color: 'lavender' }} />}
+  onClick={handleGoTop}
+/>
+
     </>
   );
 };
